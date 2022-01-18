@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+//    cxfVersion = '3.4.0' // last version where all tests pass
+    cxfVersion = '3.4.1' // first version with regression
+}
+
+dependencies {
+    implementation "org.apache.cxf:cxf-spring-boot-starter-jaxrs:${cxfVersion}"
+    implementation "org.apache.cxf:cxf-rt-transports-local:${cxfVersion}"
+    implementation 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.13.1'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
